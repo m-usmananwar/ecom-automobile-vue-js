@@ -11,7 +11,6 @@ import { RouterLink } from "vue-router";
         <li><RouterLink to="/">Home</RouterLink></li>
         <li><RouterLink to="/vendors">Vendors</RouterLink></li>
         <li><RouterLink to="/login">Login</RouterLink></li>
-        <li><RouterLink to="/vendors">Vendors</RouterLink></li>
         <li><RouterLink to="/post-ad">Post Ad</RouterLink></li>
       </ul>
     </div>
@@ -55,6 +54,17 @@ header {
       padding: 4px 1rem;
       border-radius: 5px;
     }
+  }
+}
+@media screen and (max-width: 768px) {
+  header {
+    flex-direction: column;
+    gap: 1rem;
+  }
+}
+@media screen and (max-width: 400px) {
+  ul {
+    flex-direction: column;
   }
 }
 </style>

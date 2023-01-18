@@ -81,4 +81,19 @@ $baseDarkBlueColor: #001d3d;
     }
   }
 }
+@media  screen and (max-width:950px){
+  .images-grid{
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+@media  screen and (max-width:750px){
+  .images-grid{
+    grid-template-columns: 1fr !important;
+  }
+  .action-buttons{
+    button{
+      width: 23% !important;
+    }
+  }
+}
 </style>

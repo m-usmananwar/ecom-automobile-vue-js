@@ -137,8 +137,8 @@ $baseDarkBlueColor: #001d3d;
     display: flex;
     flex-direction: column;
     gap: 10px;
-    h2{
-        color: $baseYellowColor;
+    h2 {
+      color: $baseYellowColor;
     }
     .inline-headings {
       display: flex;
@@ -160,6 +160,13 @@ $baseDarkBlueColor: #001d3d;
       text-align: center;
       cursor: pointer;
     }
+  }
+}
+@media screen and (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
   }
 }
 </style>

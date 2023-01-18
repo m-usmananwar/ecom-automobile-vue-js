@@ -28,4 +28,10 @@ import SearchBar from "@/components/SearchBar.vue";
     width: 90%;
   }
 }
+@media screen and (max-width:900px){
+  .container {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
 </style>

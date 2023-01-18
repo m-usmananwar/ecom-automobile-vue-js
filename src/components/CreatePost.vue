@@ -72,4 +72,15 @@ $baseDarkBlueColor: #001d3d;
     }
   }
 }
+@media screen and (max-width: 400px) {
+  input {
+    width: 270px !important;
+  }
+  button {
+    width: 270px !important;
+  }
+  textarea {
+    width: 270px !important;
+  }
+}
 </style>

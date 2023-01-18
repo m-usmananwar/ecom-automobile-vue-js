@@ -71,4 +71,20 @@ $baseDarkBlueColor: #001d3d;
     }
   }
 }
+@media screen and (max-width: 620px) {
+  .card {
+    flex-direction: column;
+    gap: 10px;
+    border: 1px solid;
+    border-radius: 5px;
+    .inline-headings {
+      flex-direction: column;
+    }
+    .image {
+      img {
+        border-radius: 50%;
+      }
+    }
+  }
+}
 </style>

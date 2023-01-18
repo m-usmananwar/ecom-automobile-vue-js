@@ -11,20 +11,28 @@
     <div class="footer-icons">
       <ul>
         <li>
-          <a href="#" target="_blank"
+          <a
+            href="https://www.facebook.com/profile.php?id=100008170388675"
+            target="_blank"
             ><i class="fa-brands fa-facebook-f"></i
           ></a>
         </li>
         <li>
-          <a href="#" target="_blank"
+          <a
+            href="https://www.linkedin.com/in/muhammad-usman-anwar-59241a200/"
+            target="_blank"
             ><i class="fa-brands fa-linkedin-in"></i
           ></a>
         </li>
         <li>
-          <a href="#" target="_blank"><i class="fa-brands fa-github"></i></a>
+          <a href="https://github.com/m-usmananwar" target="_blank"
+            ><i class="fa-brands fa-github"></i
+          ></a>
         </li>
         <li>
-          <a href="#" target="_blank"><i class="fa-brands fa-twitter"></i></a>
+          <a href="https://twitter.com/Muhamma50109229" target="_blank"
+            ><i class="fa-brands fa-twitter"></i
+          ></a>
         </li>
       </ul>
     </div>
@@ -66,6 +74,12 @@ footer {
         }
       }
     }
+  }
+}
+@media screen and (max-width: 768px) {
+  footer {
+    flex-direction: column;
+    gap: 12px;
   }
 }
 </style>
