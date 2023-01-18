@@ -1,0 +1,104 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;600&family=Pacifico&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap");
+// Sass Variables
+$logoFontFamily: Pacifico, cursive;
+$popinsFontFamily: Poppins, sans-serif;
+$monsterrtFontFamily: "Montserrat", sans-serif;
+$baseYellowColor: #ca8a04;
+$baseDarkBlueColor: #001d3d;
+$baseFontColor: #94a3b8;
+//Typography
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: $popinsFontFamily;
+  background: $baseDarkBlueColor;
+  color: $baseFontColor;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-top: 0;
+  font-family: $monsterrtFontFamily !important;
+}
+a {
+  text-decoration: none;
+  font-weight: bold;
+  color: $baseYellowColor;
+}
+li {
+  list-style: none;
+}
+//Header
+
+// header {
+//     border-bottom: 1px solid;
+//     width: 80%;
+//     margin: 0 auto;
+//     padding: 7px;
+//     display: flex;
+//     justify-content: space-evenly;
+//     align-items: center;
+
+//     .nav-heading {
+//       h1 {
+//         font-family: $logoFontFamily !important;
+//         color: $baseYellowColor;
+//       }
+//     }
+//     .navlinks {
+//       width: 59%;
+//       ul {
+//         display: flex;
+//         gap: 3rem;
+//         justify-content: space-between;
+//       }
+//     }
+//     .search {
+//       .search-item {
+//         color: $baseFontColor !important;
+//         background: $baseYellowColor;
+//         padding: 4px 9px;
+//         border-radius: 5px;
+//       }
+//     }
+//   }
+
+//Footer
+
+// footer {
+//   border-top: 1px solid;
+//   width: 80% ;
+//   margin:0 auto;
+//   display: flex;
+//   justify-content: space-evenly;
+//   align-items: center;
+//   .footer-heading {
+//     h1 {
+//       color: $baseYellowColor;
+//       font-family: $logoFontFamily !important;
+//     }
+//   }
+//   .footer-icons {
+//     ul {
+
+//       display: flex;
+//       gap: 30px;
+//       a {
+//         padding: 7px;
+//         background-color: $baseYellowColor;
+//         border-radius: 4px;
+//         i {
+//           width: 20px;
+//           text-align: center;
+//           background: $baseYellowColor;
+//           color: $baseFontColor;
+//         }
+//       }
+//     }
+//   }
+// }
