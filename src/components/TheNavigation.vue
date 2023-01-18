@@ -16,7 +16,7 @@ import { RouterLink } from "vue-router";
       </ul>
     </div>
     <div class="search">
-      <RouterLink to="/" class="search-item">Search</RouterLink>
+      <RouterLink to="/search" class="search-item">Search</RouterLink>
     </div>
   </header>
 </template>

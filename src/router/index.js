@@ -1,14 +1,15 @@
 import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
-import TestView from "@/views/TestView.vue";
 import DetailsView from "@/components/Details.vue";
 import VendorsView from "@/components/Vendor.vue";
 import LoginView from "@/components/Login.vue";
 import RegisterView from "@/components/Register.vue";
 import CreatePostView from "@/components/CreatePost.vue";
+import SearchView from "@/views/SearchView.vue";
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
+
     {
       path: "/",
       name: "Home",
@@ -23,6 +24,11 @@ const router = createRouter({
       path: "/register",
       name: "resgister",
       component: RegisterView,
+    },
+    {
+      path: "/search",
+      name: "search",
+      component: SearchView,
     },
     {
       path: "/post-ad",
