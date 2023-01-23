@@ -1,22 +1,38 @@
 <script setup>
 import { ref, onBeforeMount } from "vue";
-import { useRoute, RouterLink } from "vue-router";
+import { useRoute, useRouter, RouterLink } from "vue-router";
 import axios from "axios";
 const route = useRoute();
+const router = useRouter();
 const id = route.params.id;
-const BASE_URL = "http://127.0.0.1:8000/api/ads";
+const BASE_URL = "http://127.0.0.1:8000/api/vendor/ads";
 const adData = ref([]);
+const token = localStorage.getItem("token");
+const config = {
+  headers: {
+    Authorization: "Bearer " + token,
+  },
+};
 onBeforeMount(async function () {
   try {
-    const response = await axios.get(`${BASE_URL}/${id}`);
+    const response = await axios.get(`${BASE_URL}/${id}`, config);
     const data = await response.data;
     adData.value = data.ad;
-    console.log("Calling", data.ad);
+    console.log("Calling", data);
   } catch (err) {
     console.log(err.message);
     console.log(err);
   }
 });
+async function deleteAd() {
+  try {
+    const response = await axios.delete(`${BASE_URL}/${id}`, config);
+    const data = await response.data;
+    router.push("/dashboard/vendor");
+  } catch (err) {
+    console.log(err);
+  }
+}
 </script>
 <template>
   <div class="details">
@@ -46,11 +62,17 @@ onBeforeMount(async function () {
     <div class="action-buttons">
       <RouterLink
         :to="{
-          name: 'Home',
+          name: 'VendorAdEdit',
+          params: {
+            id: adData.id,
+          },
         }"
+        class="btn"
       >
-        <button>Home</button>
+        Edit
       </RouterLink>
+
+      <button @click="deleteAd()">Delete</button>
     </div>
   </div>
 </template>
@@ -93,9 +115,11 @@ $baseDarkBlueColor: #001d3d;
   .action-buttons {
     display: flex;
     gap: 7px;
-    button {
+    button,
+    .btn {
       font-weight: bold;
-      width: 100%;
+      text-align: center;
+      width: 10%;
       padding: 7px 12px;
       border: none;
       border-radius: 3px;

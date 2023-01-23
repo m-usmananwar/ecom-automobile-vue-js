@@ -1,11 +1,38 @@
 <script setup>
-import { RouterLink } from "vue-router";
+import { RouterLink, useRouter } from "vue-router";
+import { reactive } from "vue";
+import axios from "axios";
+const BASE_URL = "http://127.0.0.1:8000/api/login";
+const formData = reactive({
+  email: "",
+  password: "",
+});
+const router = useRouter();
+async function login() {
+  try {
+    const response = await axios.post(`${BASE_URL}`, formData);
+    const data = response.data;
+    localStorage.setItem("token", data.token);
+    if (data.user.role === "vendor") {
+      router.push("/dashboard/vendor");
+    } else {
+      router.push("/dashboard/admin");
+    }
+    console.log(data.token);
+  } catch (err) {
+    console.log(err);
+  }
+}
 </script>
 <template>
   <div class="container">
-    <form>
-      <input type="email" placeholder="Email" />
-      <input type="password" placeholder="Password" />
+    <form @submit.prevent="login">
+      <input type="email" placeholder="Email" v-model="formData.email" />
+      <input
+        type="password"
+        placeholder="Password"
+        v-model="formData.password"
+      />
       <button type="submit">Login</button>
     </form>
     <p>

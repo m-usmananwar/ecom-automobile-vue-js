@@ -1,15 +1,21 @@
 import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
 import DetailsView from "@/components/Details.vue";
-import VendorsView from "@/components/Vendor.vue";
+import VendorsView from "@/components/Admin/Vendors.vue";
 import LoginView from "@/components/Login.vue";
 import RegisterView from "@/components/Register.vue";
-import CreatePostView from "@/components/CreatePost.vue";
+import CreatePost from "@/components/vendor/CreatePost.vue";
 import SearchView from "@/views/SearchView.vue";
+import VendorDashboard from "@/components/vendor/Dashboard.vue";
+import VendorDetails from "@/components/vendor/VendorDetails.vue";
+import VendorEditCard from "@/components/vendor/EditCard.vue";
+import AdminDashboard from "@/components/admin/Dashboard.vue";
+import AdminDetails from "@/components/admin/AdminDetails.vue";
+import AdminEditCard from "@/components/admin/EditCard.vue";
+import UserEditCard from "@/components/admin/UserEditCard.vue";
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
-
     {
       path: "/",
       name: "Home",
@@ -31,19 +37,54 @@ const router = createRouter({
       component: SearchView,
     },
     {
-      path: "/post-ad",
-      name: "adPost",
-      component: CreatePostView,
-    },
-    {
-      path: "/details",
+      path: "/details/:id",
       name: "details",
       component: DetailsView,
     },
     {
-      path: "/vendors",
+      path: "/dashboard/vendor",
+      name: "VendorDashboard",
+      component: VendorDashboard,
+    },
+    {
+      path: "/dashboard/vendor/details/:id",
+      name: "VendorAdDetails",
+      component: VendorDetails,
+    },
+    {
+      path: "/dashboard/vendor/edit/ad/:id",
+      name: "VendorAdEdit",
+      component: VendorEditCard,
+    },
+    {
+      path: "/dashboard/vendor/post-ad",
+      name: "post-ad",
+      component: CreatePost,
+    },
+    {
+      path: "/dashboard/admin",
+      name: "AdminDashboard",
+      component: AdminDashboard,
+    },
+    {
+      path: "/dashboard/admin/vendors",
       name: "vondors",
       component: VendorsView,
+    },
+    {
+      path: "/dashboard/admin/details/:id",
+      name: "AdminAdDetails",
+      component: AdminDetails,
+    },
+    {
+      path: "/dashboard/admin/edit/ad/:id",
+      name: "AdminEditCard",
+      component: AdminEditCard,
+    },
+    {
+      path: "/dashboard/admin/edit/user/:id",
+      name: "AdminUserEditCard",
+      component: UserEditCard,
     },
   ],
 });

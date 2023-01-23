@@ -1,15 +1,61 @@
 <script setup>
-import { RouterLink } from "vue-router";
+import { RouterLink, useRouter } from "vue-router";
+import axios from "axios";
+import { reactive, ref } from "vue";
+const router = useRouter();
+const formData = reactive({
+  car_make: "",
+  car_model: "",
+  car_color: "",
+  car_millage: "",
+  description: "",
+});
+function fileChange(e) {
+  let files = [];
+  for (var key in e.target.files) {
+    console.log(e.target.files[key]);
+    files.push(e.target.files[key]);
+  }
+  formData.images = files;
+}
+
+//Request Code
+const BASE_URL = "http://127.0.0.1:8000/api/vendor/ads";
+const token = localStorage.getItem("token");
+console.log("Token", token);
+const config = {
+  headers: {
+    Authorization: "Bearer " + token,
+    "content-type": "multipart/form-data",
+  },
+};
+async function postData() {
+  console.log("posting", formData);
+  try {
+    const response = await axios.post(`${BASE_URL}`, formData, config);
+    const data = await response.data;
+    console.log("Response from api", data);
+    router.push("/dashboard/vendor");
+  } catch (err) {
+    console.log(err);
+  }
+}
 </script>
 <template>
   <div class="container">
-    <form>
-      <input type="text" placeholder="Car Make" />
-      <input type="text" placeholder="Car Model" />
-      <input type="text" placeholder="Car Color" />
-      <input type="text" placeholder="Car Millage" />
-      <input type="file" multiple />
-      <textarea>Add Detailed Description </textarea>
+    <form enctype="multipart/form-data" @submit.prevent="postData">
+      <input type="text" placeholder="Car Make" v-model="formData.car_make" />
+      <input type="text" placeholder="Car Model" v-model="formData.car_model" />
+      <input type="text" placeholder="Car Color" v-model="formData.car_color" />
+      <input
+        type="text"
+        placeholder="Car Millage"
+        v-model="formData.car_millage"
+      />
+      <input type="file" multiple @change="fileChange" />
+      <textarea v-model="formData.description">
+Add Detailed Description </textarea
+      >
       <button type="submit">Publish</button>
     </form>
   </div>

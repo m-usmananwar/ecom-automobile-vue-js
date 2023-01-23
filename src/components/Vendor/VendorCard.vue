@@ -1,18 +1,6 @@
 <script setup>
 import { RouterLink } from "vue-router";
 const props = defineProps({
-  index: {
-    type: Boolean,
-    default: false,
-  },
-  vendor: {
-    type: Boolean,
-    default: false,
-  },
-  admin: {
-    type: Boolean,
-    default: false,
-  },
   ads: {
     type: Array,
     required: true,
@@ -38,7 +26,7 @@ const props = defineProps({
       <h5 v-if="ad.is_featured">Featured</h5>
       <RouterLink
         :to="{
-          name: 'details',
+          name: 'VendorAdDetails',
           params: { id: ad.id },
         }"
       >
@@ -62,7 +50,7 @@ $baseDarkBlueColor: #001d3d;
     img {
       height: 200px;
       width: 100%;
-      border-radius: 2px;
+      border-radius: 3px;
       border: 1px solid;
     }
   }

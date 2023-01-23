@@ -9,9 +9,16 @@ import { RouterLink } from "vue-router";
     <div class="navlinks">
       <ul>
         <li><RouterLink to="/">Home</RouterLink></li>
-        <li><RouterLink to="/vendors">Vendors</RouterLink></li>
+        <li><RouterLink to="/dashboard/admin/vendors">Vendors</RouterLink></li>
         <li><RouterLink to="/login">Login</RouterLink></li>
-        <li><RouterLink to="/post-ad">Post Ad</RouterLink></li>
+        <li>
+          <RouterLink
+            :to="{
+              name: 'post-ad',
+            }"
+            >Post Ad</RouterLink
+          >
+        </li>
       </ul>
     </div>
     <div class="search">
