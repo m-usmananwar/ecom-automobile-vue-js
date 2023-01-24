@@ -23,14 +23,28 @@ onBeforeMount(async function () {
 });
 </script>
 <template>
+  <div class="new-ad">
+    <RouterLink
+      :to="{
+        name: 'post-ad',
+      }"
+      >Post Ad</RouterLink
+    >
+  </div>
   <VendorCard :ads="adData"></VendorCard>
 </template>
 <style scoped lang="scss">
-.no-post {
-  width: 80%;
-  margin: 1rem auto;
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
+$baseYellowColor: #ca8a04;
+$baseDarkBlueColor: #001d3d;
+.new-ad {
+  margin: 1rem !important;
+  a {
+    color: $baseDarkBlueColor;
+    background: $baseYellowColor;
+    width: 10%;
+    padding: 7px 10px;
+    border: none;
+    border-radius: 3px;
+  }
 }
 </style>

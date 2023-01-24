@@ -13,6 +13,7 @@ import AdminDashboard from "@/components/admin/Dashboard.vue";
 import AdminDetails from "@/components/admin/AdminDetails.vue";
 import AdminEditCard from "@/components/admin/EditCard.vue";
 import UserEditCard from "@/components/admin/UserEditCard.vue";
+import NotFound from "@/components/NotFound.vue";
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -45,6 +46,9 @@ const router = createRouter({
       path: "/dashboard/vendor",
       name: "VendorDashboard",
       component: VendorDashboard,
+      meta: {
+        requiresAuth: true,
+      },
     },
     {
       path: "/dashboard/vendor/details/:id",
@@ -65,6 +69,9 @@ const router = createRouter({
       path: "/dashboard/admin",
       name: "AdminDashboard",
       component: AdminDashboard,
+      meta: {
+        requiresAuth: true,
+      },
     },
     {
       path: "/dashboard/admin/vendors",
@@ -86,7 +93,19 @@ const router = createRouter({
       name: "AdminUserEditCard",
       component: UserEditCard,
     },
+    {
+      path: "/:pathMatch(.*)*",
+      name: "NotFound",
+      component: NotFound,
+    },
   ],
 });
-
+router.beforeEach((to, from) => {
+  if (to.meta.requiresAuth && !localStorage.getItem("token")) {
+    return {
+      name: "login",
+      query: { redirect: to.fullPath },
+    };
+  }
+});
 export default router;

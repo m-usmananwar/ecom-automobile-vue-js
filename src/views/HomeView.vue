@@ -17,5 +17,5 @@ onBeforeMount(async function () {
 </script>
 
 <template>
-  <Card :ads="adData" :index="true" />
+  <Card :ads="adData" />
 </template>

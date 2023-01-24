@@ -1,8 +1,9 @@
 <script setup>
 import { ref, onBeforeMount } from "vue";
-import { useRoute, RouterLink } from "vue-router";
+import { useRoute, useRouter } from "vue-router";
 import axios from "axios";
 const route = useRoute();
+const router = useRouter();
 const id = route.params.id;
 const BASE_URL = "http://127.0.0.1:8000/api/ads";
 const adData = ref([]);
@@ -44,13 +45,7 @@ onBeforeMount(async function () {
       </p>
     </div>
     <div class="action-buttons">
-      <RouterLink
-        :to="{
-          name: 'Home',
-        }"
-      >
-        <button>Home</button>
-      </RouterLink>
+      <button @click="router.back()">Back</button>
     </div>
   </div>
 </template>

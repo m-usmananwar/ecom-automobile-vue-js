@@ -1,5 +1,29 @@
 <script setup>
-import { RouterLink } from "vue-router";
+import { RouterLink, useRouter } from "vue-router";
+import axios from "axios";
+import { ref } from "vue";
+const router = useRouter();
+const token = ref(localStorage.getItem("token"));
+console.log("FromNavigataion", token.value);
+const BASE_URL = "http://127.0.0.1:8000/api/logout";
+const config = {
+  headers: {
+    Authorization: "Bearer " + token.value,
+  },
+};
+async function logout() {
+  try {
+    const response = await axios.get(`${BASE_URL}`, config);
+    const data = await response;
+    if (data.status == 200) {
+      localStorage.removeItem("token");
+      router.push("/");
+    }
+    console.log("Something went wrong in API ");
+  } catch (err) {
+    console.log(err);
+  }
+}
 </script>
 <template>
   <header>
@@ -9,16 +33,8 @@ import { RouterLink } from "vue-router";
     <div class="navlinks">
       <ul>
         <li><RouterLink to="/">Home</RouterLink></li>
-        <li><RouterLink to="/dashboard/admin/vendors">Vendors</RouterLink></li>
-        <li><RouterLink to="/login">Login</RouterLink></li>
-        <li>
-          <RouterLink
-            :to="{
-              name: 'post-ad',
-            }"
-            >Post Ad</RouterLink
-          >
-        </li>
+        <li v-if="!token"><RouterLink to="/login">Login</RouterLink></li>
+        <li v-if="token"><button @click="logout">Logout</button></li>
       </ul>
     </div>
     <div class="search">
@@ -52,6 +68,13 @@ header {
       display: flex;
       gap: 3rem;
       justify-content: space-between;
+      button {
+        cursor: pointer;
+        font-weight: bold;
+        font-size: 16px;
+        border: none;
+        color: $baseYellowColor;
+      }
     }
   }
   .search {

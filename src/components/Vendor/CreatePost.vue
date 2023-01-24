@@ -53,9 +53,11 @@ async function postData() {
         v-model="formData.car_millage"
       />
       <input type="file" multiple @change="fileChange" />
-      <textarea v-model="formData.description">
-Add Detailed Description </textarea
+      <textarea
+        v-model="formData.description"
+        placeholder="Add description of car"
       >
+      </textarea>
       <button type="submit">Publish</button>
     </form>
   </div>

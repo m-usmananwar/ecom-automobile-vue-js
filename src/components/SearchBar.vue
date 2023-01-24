@@ -1,19 +1,48 @@
-<script setup></script>
+<script setup>
+import { reactive } from "vue";
+const formData = reactive({
+  model: "",
+  color: "",
+  city: "",
+  millage_from: "",
+  millage_to: "",
+  year_from: "",
+  year_to: "",
+});
+function submit() {
+  console.log("Data For Search", formData);
+}
+</script>
 <template>
   <div class="container">
     <h3>SEARCH HERE</h3>
-    <form>
+    <form @submit.prevent="$emit('search', formData)">
       <div class="keyword">
         <h4>Search By Keyword</h4>
-        <input type="text" placeholder="Honda" />
+        <input type="text" placeholder="Honda" v-model="formData.model" />
       </div>
       <h4>Filter By City</h4>
       <div class="city">
         <div class="city-radio">
-          <input type="radio" id="lhr" />
-          <input type="radio" id="kar" />
-          <input type="radio" id="isl" />
-          <input type="radio" id="fsd" />
+          <input type="radio" id="lhr" value="Lahore" v-model="formData.city" />
+          <input
+            type="radio"
+            id="kar"
+            value="Karachi"
+            v-model="formData.city"
+          />
+          <input
+            type="radio"
+            id="isl"
+            value="Islamabad"
+            v-model="formData.city"
+          />
+          <input
+            type="radio"
+            id="fsd"
+            value="Faislabad"
+            v-model="formData.city"
+          />
         </div>
         <div class="city-labels">
           <label for="lhr">Lahore</label>
@@ -25,9 +54,9 @@
       <h4>Filter By Color</h4>
       <div class="color">
         <div class="color-radio">
-          <input type="radio" id="wh" />
-          <input type="radio" id="bl" />
-          <input type="radio" id="gr" />
+          <input type="radio" id="wh" value="white" v-model="formData.color" />
+          <input type="radio" id="bl" value="black" v-model="formData.color" />
+          <input type="radio" id="gr" value="gray" v-model="formData.color" />
         </div>
         <div class="color-labels">
           <label for="wh">White</label>
@@ -37,13 +66,13 @@
       </div>
       <div class="millage">
         <h4>Filter By Millage</h4>
-        <input type="text" placeholder="From" />
-        <input type="text" placeholder="To" />
+        <input type="text" placeholder="From" v-model="formData.millage_from" />
+        <input type="text" placeholder="To" v-model="formData.millage_to" />
       </div>
       <div class="year">
         <h4>Filter By Year</h4>
-        <input type="text" placeholder="From" />
-        <input type="text" placeholder="To" />
+        <input type="text" placeholder="From" v-model="formData.year_from" />
+        <input type="text" placeholder="To" v-model="formData.year_to" />
       </div>
       <button type="submit">Go</button>
     </form>
