@@ -9,6 +9,7 @@ const formData = reactive({
   car_model: "",
   car_color: "",
   car_millage: "",
+  is_featured: "",
   description: "",
 });
 function fileChange(e) {
@@ -39,6 +40,7 @@ onBeforeMount(async function () {
   formData.car_model = data.car_model;
   formData.car_millage = data.car_millage;
   formData.description = data.description;
+  formData.is_featured = data.is_featured;
 });
 async function postData() {
   console.log("posting", formData);
@@ -52,6 +54,7 @@ async function postData() {
         car_color: formData.car_color,
         car_millage: formData.car_millage,
         description: formData.description,
+        is_featured: formData.is_featured,
         images: formData.images,
       },
       headers: {
@@ -72,6 +75,10 @@ async function postData() {
       <input type="text" placeholder="Car Make" v-model="formData.car_make" />
       <input type="text" placeholder="Car Model" v-model="formData.car_model" />
       <input type="text" placeholder="Car Color" v-model="formData.car_color" />
+      <select v-model="formData.is_featured">
+        <option :value="1">Featured</option>
+        <option :value="0" selected>Not Featured</option>
+      </select>
       <input
         type="text"
         placeholder="Car Millage"
@@ -113,6 +120,14 @@ $baseDarkBlueColor: #001d3d;
     flex-direction: column;
     gap: 20px;
     input {
+      @include colorAndBg($baseDarkBlueColor, $baseFontColor);
+      border: 1px solid $baseYellowColor;
+      outline-color: $baseYellowColor;
+      &::placeholder {
+        color: $baseDarkBlueColor;
+      }
+    }
+    select {
       @include colorAndBg($baseDarkBlueColor, $baseFontColor);
       border: 1px solid $baseYellowColor;
       outline-color: $baseYellowColor;
